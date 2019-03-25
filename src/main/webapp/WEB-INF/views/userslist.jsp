@@ -13,7 +13,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
     <title>Users List</title>
     <link href="<c:url value='/static/css/bootstrap.css' />" rel="stylesheet"></link>
-    <link href="<c:url value='/static/css/app.css' />" rel="stylesheet"></link>
+    <link href="<c:url value='/static/css/app1.css' />" rel="stylesheet"></link>
 </head>
 
 <body>
@@ -58,7 +58,7 @@
     </div>
     <sec:authorize access="hasRole('ADMIN')">
         <div class="well">
-            <a href="<c:url value='/newuser' />">Add New User</a>
+            <a href="<c:url value='//newuser' />">Add New User</a>
         </div>
     </sec:authorize>
 </div>

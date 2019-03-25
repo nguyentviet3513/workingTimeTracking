@@ -26,7 +26,7 @@ import java.util.Locale;
 @Controller
 @RequestMapping("/")
 @SessionAttributes("roles")
-public class AppController {
+public class AdminController {
 
     @Autowired
     UserService userService;
@@ -49,7 +49,6 @@ public class AppController {
      */
     @RequestMapping(value = { "/", "/list" }, method = RequestMethod.GET)
     public String listUsers(ModelMap model) {
-
         List<User> users = userService.findAllUsers();
         model.addAttribute("users", users);
         model.addAttribute("loggedinuser", getPrincipal());

@@ -14,7 +14,7 @@ import workingtimetracking.converter.RoleToUserProfileConverter;
 @Configuration
 @EnableWebMvc
 @ComponentScan(basePackages = "workingtimetracking")
-public class AppConfiguration extends WebMvcConfigurerAdapter {
+public class AppConfiguration  implements  WebMvcConfigurer {
     @Autowired
     RoleToUserProfileConverter roleToUserProfileConverter;
 
@@ -24,7 +24,6 @@ public class AppConfiguration extends WebMvcConfigurerAdapter {
      */
     @Override
     public void configureViewResolvers(ViewResolverRegistry registry) {
-
         InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
         viewResolver.setViewClass(JstlView.class);
         viewResolver.setPrefix("/WEB-INF/views/");

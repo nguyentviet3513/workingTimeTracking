@@ -12,7 +12,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
     <title>Login page</title>
     <link href="<c:url value='/static/css/bootstrap.css' />" rel="stylesheet"></link>
-    <link href="<c:url value='/static/css/app.css' />" rel="stylesheet"></link>
+    <link href="<c:url value='/static/css/app1.css' />" rel="stylesheet"></link>
     <link rel="stylesheet" type="text/css"
           href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.css"/>
 </head>
@@ -44,7 +44,7 @@
                         <input type="password" class="form-control" id="password" name="password"
                                placeholder="Enter Password" required>
                     </div>
-                    <div class="input-group input-sm">
+                    <div class="input-group input-sm remember-me-check-box">
                         <div class="checkbox">
                             <label><input type="checkbox" id="rememberme" name="remember-me"> Remember Me</label>
                         </div>

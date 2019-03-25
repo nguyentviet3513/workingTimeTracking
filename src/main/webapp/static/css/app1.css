@@ -68,6 +68,7 @@ body, #mainWrapper, .form-control{
     margin-top: 100px;
     background-color: floralwhite;
     width: 40%;
+	top: 15%;
     left: 30%;
     position: absolute;
 }
@@ -83,4 +84,7 @@ body, #mainWrapper, .form-control{
 
 .authbar{
 	margin-bottom:15px;
+}
+.input-group.input-sm.remember-me-check-box {
+	float: right;
 }
