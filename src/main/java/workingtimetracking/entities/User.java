@@ -9,39 +9,42 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name="APP_USER")
+@Table(name = "APP_USER")
 public class User implements Serializable {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @NotEmpty
-    @Column(name="SSO_ID", unique=true, nullable=false)
+    @Column(name = "SSO_ID", unique = true, nullable = false)
     private String ssoId;
 
     @NotEmpty
-    @Column(name="PASSWORD", nullable=false)
+    @Column(name = "PASSWORD", nullable = false)
     private String password;
 
     @NotEmpty
-    @Column(name="FIRST_NAME", nullable=false)
+    @Column(name = "FIRST_NAME", nullable = false)
     private String firstName;
 
     @NotEmpty
-    @Column(name="LAST_NAME", nullable=false)
+    @Column(name = "LAST_NAME", nullable = false)
     private String lastName;
 
     @NotEmpty
-    @Column(name="EMAIL", nullable=false)
+    @Column(name = "EMAIL", nullable = false)
     private String email;
 
     @NotEmpty
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "APP_USER_USER_PROFILE",
-            joinColumns = { @JoinColumn(name = "USER_ID") },
-            inverseJoinColumns = { @JoinColumn(name = "USER_PROFILE_ID") })
+            joinColumns = {@JoinColumn(name = "USER_ID")},
+            inverseJoinColumns = {@JoinColumn(name = "USER_PROFILE_ID")})
     private Set<UserProfile> userProfiles = new HashSet<UserProfile>();
+
+    @Column(name = "CARD_ID")
+    private String cardId;
 
     public Integer getId() {
         return id;
@@ -95,6 +98,14 @@ public class User implements Serializable {
         return userProfiles;
     }
 
+    public String getCardId() {
+        return cardId;
+    }
+
+    public void setCardId(String cardId) {
+        this.cardId = cardId;
+    }
+
     public void setUserProfiles(Set<UserProfile> userProfiles) {
         this.userProfiles = userProfiles;
     }
@@ -138,9 +149,8 @@ public class User implements Serializable {
     public String toString() {
         return "User [id=" + id + ", ssoId=" + ssoId + ", password=" + password
                 + ", firstName=" + firstName + ", lastName=" + lastName
-                + ", email=" + email + "]";
+                + ", email=" + email + ", cardId=" + cardId + "]";
     }
-
 
 
 }

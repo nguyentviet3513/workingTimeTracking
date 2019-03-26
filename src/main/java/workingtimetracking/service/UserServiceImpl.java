@@ -1,12 +1,16 @@
 package workingtimetracking.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import workingtimetracking.dao.UserDao;
+import workingtimetracking.entities.Attendance;
 import workingtimetracking.entities.User;
 
+import java.util.Date;
 import java.util.List;
 
 @Service("userService")
@@ -64,6 +68,34 @@ public class UserServiceImpl implements UserService{
     public boolean isUserSSOUnique(Integer id, String sso) {
         User user = findBySSO(sso);
         return ( user == null || ((id != null) && (user.getId() == id)));
+    }
+
+    @Override
+    public String getPrincipal() {
+        String userName = null;
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        if (principal instanceof UserDetails) {
+            userName = ((UserDetails)principal).getUsername();
+        } else {
+            userName = principal.toString();
+        }
+        return userName;
+    }
+
+    @Override
+    public List<Attendance> getAllAttendances() {
+        return null;
+    }
+
+    @Override
+    public List<Attendance> getAllAttendances(boolean isCheckin) {
+        return null;
+    }
+
+    @Override
+    public List<Attendance> getMonthAttendances(int month) {
+        return null;
     }
 
 }

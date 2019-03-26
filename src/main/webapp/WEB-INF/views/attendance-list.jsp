@@ -20,17 +20,16 @@
 <body>
 <div class="generic-container">
     <%@include file="authheader.jsp" %>
+    <div>
+        <a href="<c:url value='/user/checkin' />" class="btn btn-success home-button-width">checkin</a>
+    </div>
     <div class="panel panel-default">
         <!-- Default panel contents -->
-        <div class="panel-heading"><span class="lead">List of Users </span></div>
+        <div class="panel-heading"><span class="lead">List attendance of <strong style: bold;>${loggedinuser}</strong> </span></div>
         <table class="table table-hover">
             <thead>
             <tr>
-                <th>Firstname</th>
-                <th>Lastname</th>
-                <th>Email</th>
-                <th>SSO ID</th>
-                <th>Card ID</th>
+                <th>Time</th>
                 <sec:authorize access="hasRole('ADMIN') or hasRole('DBA')">
                     <th width="100"></th>
                 </sec:authorize>
@@ -41,29 +40,20 @@
             </tr>
             </thead>
             <tbody>
-            <c:forEach items="${users}" var="user">
+            <c:forEach items="${attendances}" var="attendance">
                 <tr>
-                    <td>${user.firstName}</td>
-                    <td>${user.lastName}</td>
-                    <td>${user.email}</td>
-                    <td>${user.ssoId}</td>
-                    <td>${user.cardId}</td>
+                    <td>${user.Time}</td>
                     <sec:authorize access="hasRole('ADMIN') or hasRole('DBA')">
-                        <td><a href="<c:url value='/edit-user-${user.ssoId}' />" class="btn btn-success custom-width">edit</a></td>
+                        <td><a href="<c:url value='/edit-user-${attendances}' />" class="btn btn-success custom-width">edit</a></td>
                     </sec:authorize>
                     <sec:authorize access="hasRole('ADMIN')">
-                        <td><a href="<c:url value='/delete-user-${user.ssoId}' />" class="btn btn-danger custom-width">delete</a></td>
+                        <td><a href="<c:url value='/delete-user-${attendances}' />" class="btn btn-danger custom-width">delete</a></td>
                     </sec:authorize>
                 </tr>
             </c:forEach>
             </tbody>
         </table>
     </div>
-    <sec:authorize access="hasRole('ADMIN')">
-        <div class="well">
-            <a href="<c:url value='//newuser' />">Add New User</a>
-        </div>
-    </sec:authorize>
 </div>
 </body>
 </html>

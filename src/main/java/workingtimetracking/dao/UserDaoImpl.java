@@ -8,8 +8,10 @@ import org.hibernate.criterion.Restrictions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
+import workingtimetracking.entities.Attendance;
 import workingtimetracking.entities.User;
 
+import java.util.Date;
 import java.util.List;
 
 
@@ -20,7 +22,7 @@ public class UserDaoImpl extends AbstractDao<Integer, User> implements UserDao {
 
     public User findById(int id) {
         User user = getByKey(id);
-        if(user!=null){
+        if (user != null) {
             Hibernate.initialize(user.getUserProfiles());
         }
         return user;
@@ -30,8 +32,8 @@ public class UserDaoImpl extends AbstractDao<Integer, User> implements UserDao {
         logger.info("SSO : {}", sso);
         Criteria crit = createEntityCriteria();
         crit.add(Restrictions.eq("ssoId", sso));
-        User user = (User)crit.uniqueResult();
-        if(user!=null){
+        User user = (User) crit.uniqueResult();
+        if (user != null) {
             Hibernate.initialize(user.getUserProfiles());
         }
         return user;
@@ -52,6 +54,9 @@ public class UserDaoImpl extends AbstractDao<Integer, User> implements UserDao {
         return users;
     }
 
+
+
+
     public void save(User user) {
         persist(user);
     }
@@ -59,7 +64,7 @@ public class UserDaoImpl extends AbstractDao<Integer, User> implements UserDao {
     public void deleteBySSO(String sso) {
         Criteria crit = createEntityCriteria();
         crit.add(Restrictions.eq("ssoId", sso));
-        User user = (User)crit.uniqueResult();
+        User user = (User) crit.uniqueResult();
         delete(user);
     }
 

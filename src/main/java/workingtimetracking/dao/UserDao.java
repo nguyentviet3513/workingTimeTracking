@@ -16,4 +16,5 @@ public interface UserDao {
     void deleteBySSO(String sso);
 
     List<User> findAllUsers();
+
 }

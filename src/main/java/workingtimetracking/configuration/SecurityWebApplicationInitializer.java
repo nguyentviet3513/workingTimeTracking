@@ -1,4 +1,4 @@
-package workingtimetracking.security;
+package workingtimetracking.configuration;
 
 import org.springframework.security.web.context.AbstractSecurityWebApplicationInitializer;
 
